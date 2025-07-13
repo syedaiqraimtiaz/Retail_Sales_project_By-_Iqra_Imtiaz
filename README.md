@@ -13,7 +13,7 @@
  1. Database Setup
  •	Database Creation: The project starts by creating a database named p1_retail_db.
  •	Table Creation: A table named retail_sales is created to store the sales data. The table structure includes columns for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sale amount.
-# CREATE DATABASE p1_retail_db;
+CREATE DATABASE p1_retail_db;
 
  CREATE TABLE retail_sales
 (
@@ -37,11 +37,11 @@
  •	Category Count: Identify all unique product categories in the dataset.
  •	Null Value Check: Check for any null values in the dataset and delete records with missing data.
  
-#  SELECT COUNT(*) FROM retail_sales;
+  SELECT COUNT(*) FROM retail_sales;
  SELECT COUNT(DISTINCT customer_id) FROM retail_sales;
  SELECT DISTINCT category FROM retail_sales;
 
-# SELECT * FROM retail_sales
+ SELECT * FROM retail_sales
  WHERE 
     sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
     gender IS NULL OR age IS NULL OR category IS NULL OR 
@@ -59,13 +59,13 @@
 
  1.	Write a SQL query to retrieve all columns for sales made on '2022-11-05:
 
- # SELECT *
+  SELECT *
  FROM retail_sales
  WHERE sale_date = '2022-11-05';
 
  2.	Write a SQL query to retrieve all transactions where the category is 'Clothing' and the quantity sold is more than 4 in the month of Nov-2022:
  
- # SELECT 
+  SELECT 
   *
 FROM retail_sales
  WHERE 
@@ -76,6 +76,7 @@ FROM retail_sales
     quantity >= 4
 
  3.	Write a SQL query to calculate the total sales (total_sale) for each category.:
+
  SELECT 
     category,
     SUM(total_sale) as net_sale,
@@ -84,11 +85,13 @@ FROM retail_sales
  GROUP BY 1
 
 4.	Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.:
+
 SELECT
     ROUND(AVG(age), 2) as avg_age
  FROM retail_sales
 WHERE category = 'Beauty'
-# 5.	Write a SQL query to find all transactions where the total_sale is greater than 1000.:
+
+ 5.	Write a SQL query to find all transactions where the total_sale is greater than 1000.:
  SELECT * FROM retail_sales
  WHERE total_sale > 1000
 # 6.	Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.:
